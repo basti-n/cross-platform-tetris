@@ -3,11 +3,20 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "build:tetris": "ng build tetris",
+    "start:tetris": "ng serve tetris -o",
+    "lint:tetris": "ng lint tetris",
+    "test:tetris": "ng test tetris",
+    "e2e:tetris:": "ng e2e tetris",
+    "build:tetris2": "ng build tetris2",
+    "start:tetris2": "ng serve tetris2 -o",
+    "lint:tetris2": "ng lint tetris2",
+    "test:tetris2": "ng test tetris2",
+    "e2e:tetris2:": "ng e2e tetris2",
+    "build:game-engine": "ng build game-engine-lib --watch",
+    "lint:game-engine": "ng lint game-engine-lib",
+    "test:game-engine": "ng test game-engine-lib",
+    "e2e:game-engine:": "ng e2e game-engine-lib"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +33,8 @@
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "~0.802.2",
+    "@angular-devkit/build-ng-packagr": "~0.802.2",
     "@angular/cli": "~8.2.2",
     "@angular/compiler-cli": "~8.2.0",
     "@angular/language-service": "~8.2.0",
@@ -38,8 +49,10 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
+    "ng-packagr": "^5.3.0",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
+    "tsickle": "^0.36.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
   }

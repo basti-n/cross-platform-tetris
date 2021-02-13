@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@game-engine-lib": [
+        "dist/game-engine-lib"
+      ],
+      "@game-engine-lib/*": [
+        "dist/game-engine-lib/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
