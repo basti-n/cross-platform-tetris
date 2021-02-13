@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { GameEngineLibService } from '@game-engine-lib';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +8,6 @@ import { GameEngineLibService } from '@game-engine-lib';
 export class AppComponent {
   title = 'tetris';
 
-  constructor(private readonly gameEngineService: GameEngineLibService) {
-    console.log(this.gameEngineService.testing)
+  constructor() {
   }
 }
