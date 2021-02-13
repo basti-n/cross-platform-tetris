@@ -22,7 +22,7 @@
             "main": "projects/tetris/src/main.ts",
             "polyfills": "projects/tetris/src/polyfills.ts",
             "tsConfig": "projects/tetris/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "projects/tetris/src/favicon.ico",
               "projects/tetris/src/assets"
@@ -45,7 +45,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -144,7 +143,7 @@
             "main": "projects/tetris2/src/main.ts",
             "polyfills": "projects/tetris2/src/polyfills.ts",
             "tsConfig": "projects/tetris2/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "projects/tetris2/src/favicon.ico",
               "projects/tetris2/src/assets"
@@ -167,7 +166,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -258,6 +256,11 @@
           "options": {
             "tsConfig": "projects/game-engine-lib/tsconfig.lib.json",
             "project": "projects/game-engine-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/game-engine-lib/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
