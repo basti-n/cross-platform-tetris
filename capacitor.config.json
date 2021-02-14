@@ -1,0 +1,13 @@
+{
+  "appId": "com.crossplatform.tetris",
+  "appName": "cross-platform-tetris",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist/tetris",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}
