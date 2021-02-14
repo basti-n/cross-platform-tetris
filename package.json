@@ -1,8 +1,12 @@
 {
   "name": "cross-platform-tetris",
   "version": "0.0.0",
+  "main": "main.js",
   "scripts": {
     "ng": "ng",
+    "start": "npm-run-all -p electron:serve start:tetris",
+    "electron:tsc": "tsc -p tsconfig.serve.json",
+    "electron:serve": "wait-on tcp:4200 && npm run electron:tsc && npx electron . --serve",
     "build:tetris": "ng build tetris",
     "start:tetris": "ng serve tetris -o",
     "lint:tetris": "ng lint tetris",
@@ -16,7 +20,11 @@
     "build:game-engine": "ng build game-engine-lib --watch",
     "lint:game-engine": "ng lint game-engine-lib",
     "test:game-engine": "ng test game-engine-lib",
-    "e2e:game-engine:": "ng e2e game-engine-lib"
+    "e2e:game-engine:": "ng e2e game-engine-lib",
+    "postinstall": "electron-builder install-app-deps",
+    "build": "npm run electron:tsc && npm run build:tetris -- --base-href ./",
+    "build:prod": "npm run build -- -c production",
+    "package": "npm run build:prod && electron-builder build"
   },
   "private": true,
   "dependencies": {
@@ -28,7 +36,10 @@
     "@angular/platform-browser": "~11.2.0",
     "@angular/platform-browser-dynamic": "~11.2.0",
     "@angular/router": "~11.2.0",
+    "electron-reload": "^1.5.0",
+    "install": "^0.13.0",
     "ng-zzfx": "0.0.6",
+    "npm": "^7.5.4",
     "rxjs": "~6.6.3",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
@@ -43,6 +54,8 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
+    "electron": "^11.0.5",
+    "electron-builder": "^22.9.1",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~6.1.1",
@@ -51,9 +64,12 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
     "ng-packagr": "^11.0.0",
+    "npm-run-all": "^4.1.5",
     "protractor": "~7.0.0",
     "ts-node": "~7.0.0",
     "tslint": "~6.1.3",
-    "typescript": "~4.1.5"
+    "typescript": "~4.1.5",
+    "wait-for-all": "^3.0.0",
+    "wait-on": "^5.2.1"
   }
 }
