@@ -20,6 +20,7 @@ import {
 import { Zoundfx } from 'ng-zzfx';
 import { IPiece, Piece } from '../piece/piece.component';
 import { GameEngineLibService } from '../../services/game-engine-lib.service';
+import { CapacitorStorageService } from 'projects/shared-lib/src/public-api';
 
 @Component({
   selector: 'game-board',
@@ -76,9 +77,11 @@ export class BoardComponent implements OnInit {
     }
   }
 
-  constructor(private readonly service: GameEngineLibService) {}
+  constructor(private readonly service: GameEngineLibService, private readonly storageService: CapacitorStorageService) {}
 
-  ngOnInit() {
+  async ngOnInit() {
+    const highscore = await this.localStorageGet("highscore");  // newly added
+    highscore ? (this.highScore = highscore) : (this.highScore = 0);  // newly added
     this.initBoard();
     this.initSound();
     this.initNext();
@@ -283,6 +286,7 @@ export class BoardComponent implements OnInit {
     this.gameStarted = false;
     cancelAnimationFrame(this.requestId);
     this.highScore = this.points > this.highScore ? this.points : this.highScore;
+    this.localStorageSet("highscore", this.highScore);  // newly added
     this.ctx.fillStyle = 'black';
     this.ctx.fillRect(1, 3, 8, 1.2);
     this.ctx.font = '1px Arial';
@@ -292,5 +296,13 @@ export class BoardComponent implements OnInit {
 
   getEmptyBoard(): number[][] {
     return Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+  }
+
+  private async localStorageGet(key: string): Promise<any> {
+    return await this.storageService.get(key);
+  }
+
+  private localStorageSet(key: string, value: any): void {
+    this.storageService.set(key, value);
   }
 }
